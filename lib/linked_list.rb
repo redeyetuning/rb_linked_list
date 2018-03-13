@@ -21,15 +21,28 @@ class	LinkedList
 
 	# append adds a new node to the end of the list
 	def append
-		@head == nil ? @head = Node.new : @tail = Node.new
+		if @tail  
+			current = Node.new 
+			@tail.next_node = current 
+			@tail = current
+		else 
+			@tail = Node.new
+			@head = @tail  
+		end
 		@nodes += 1
 	end
 
 	#prepend adds a new node to the start of the list
-	def prepend value=nil
-		@linked_list.select{|item| item.next_node += 1 if item.next_node != nil}
-		@linked_list.unshift(Node.new value, 1)
-		@nodes += 1
+	def prepend 
+		if @head 
+		 	current = Node.new
+		 	current.next_node = @head
+		 	@head = current
+		else
+			@head = Node.new
+			@tail = @head
+		 	@nodes += 1
+		end
 	end
 
 	#size returns the total number of nodes in the list
