@@ -2,33 +2,49 @@ class Node
 
 	attr_accessor :value, :next_node
 
-	def intitialize
-		@value = nil
-		@next_node = nil
+	def initialize value= nil, next_node= nil
+		@value = value  
+		@next_node = next_node 
 	end 
 
 end
 
 class	LinkedList
-	
+
+	attr_accessor :head, :tail, :nodes
+
+	def initialize
+		@head = nil
+		@tail = nil
+		@nodes = 0
+	end
+
 	# append adds a new node to the end of the list
 	def append
+		@head == nil ? @head = Node.new : @tail = Node.new
+		@nodes += 1
 	end
 
 	#prepend adds a new node to the start of the list
-	def prepend
+	def prepend value=nil
+		@linked_list.select{|item| item.next_node += 1 if item.next_node != nil}
+		@linked_list.unshift(Node.new value, 1)
+		@nodes += 1
 	end
 
 	#size returns the total number of nodes in the list
 	def size
+		@nodes
 	end
 
 	#head returns the first node in the list
-	def head
-	end
+	#def head
+	#	@linked_list[0]
+	#end
 
 	#tail returns the last node in the list
 	def tail
+		@linked_list[@nodes-1]
 	end
 
 	#at(index) returns the node at the given index
@@ -60,3 +76,4 @@ class	LinkedList
 	end
 
 end
+
