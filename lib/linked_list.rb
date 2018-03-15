@@ -97,10 +97,25 @@ class	LinkedList
 
 	#to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( data ) -> ( data ) -> ( data ) -> nil
 	def to_s
+		current = @head 
+		output = current.to_s + " -> "
+		until current.next_node == nil
+			output += current.next_node.to_s + " -> "
+			current =  current.next_node
+		end
+		output += "<nil>"
 	end
 
 	#insert_at(index) that inserts the node at the given index
-	def insert_at index
+	def insert_at index, value=nil
+		current = @head 
+		until i = index-1
+			current =  current.next_node
+			i += 1
+		end
+		new_node = Node.new(value, current.next_node)
+		current.next_node = new_node
+		
 	end
 
 	#remove_at(index) that removes the node at the given index. (You will need to update the links of your nodes in the list when you remove a node.
